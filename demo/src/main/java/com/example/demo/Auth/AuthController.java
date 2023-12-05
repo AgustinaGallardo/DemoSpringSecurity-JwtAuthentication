@@ -1,27 +1,19 @@
 package com.example.demo.Auth;
-
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
-    @PostMapping(value = "login")
-    public String login(){
-        return "login publico";
-    }
+    private final AuthService authService;
 
-    @PostMapping(value = "register")
-    public String register(){
-        return "El registro publico";
-    }
-
-
-
-    /**
-     *
     @PostMapping(value = "login")
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request)
     {
@@ -32,5 +24,5 @@ public class AuthController {
     public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request)
     {
         return ResponseEntity.ok(authService.register(request));
-    } */
+    }
 }
